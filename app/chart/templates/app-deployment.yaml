@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-1
+spec:
+  selector:
+    matchLabels:
+      version: one
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        version: one
+    spec:
+      containers:
+      - name: server
+        image: "gcr.io/{{ .Values.project }}/hello-app:latest"
